@@ -3071,6 +3071,9 @@ spec:
                     description: Memory is the amount of memory to request for the
                       pod.
                     type: string
+                  memoryLimit:
+                    description: MemoryLimit overrides the memory limit of the pod.
+                    type: string
                   memoryOverhead:
                     description: MemoryOverhead is the amount of off-heap memory to
                       allocate in cluster mode, in MiB unless otherwise specified.
@@ -5235,6 +5238,13 @@ spec:
                       executors if dynamic allocation is enabled.
                     format: int32
                     type: integer
+                  shuffleTrackingEnabled:
+                    description: |-
+                      ShuffleTrackingEnabled enables shuffle file tracking for executors, which allows dynamic allocation without
+                      the need for an external shuffle service. This option will try to keep alive executors that are storing
+                      shuffle data for active jobs. If external shuffle service is enabled, set ShuffleTrackingEnabled to false.
+                      ShuffleTrackingEnabled is true by default if dynamicAllocation.enabled is true.
+                    type: boolean
                   shuffleTrackingTimeout:
                     description: |-
                       ShuffleTrackingTimeout controls the timeout in milliseconds for executors that are holding
@@ -8171,6 +8181,9 @@ spec:
                   memory:
                     description: Memory is the amount of memory to request for the
                       pod.
+                    type: string
+                  memoryLimit:
+                    description: MemoryLimit overrides the memory limit of the pod.
                     type: string
                   memoryOverhead:
                     description: MemoryOverhead is the amount of off-heap memory to

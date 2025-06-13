@@ -1,6 +1,6 @@
 # spark-operator
 
-![Version: 2.1.1](https://img.shields.io/badge/Version-2.1.1-informational?style=flat-square) ![AppVersion: 2.1.1](https://img.shields.io/badge/AppVersion-2.1.1-informational?style=flat-square)
+![Version: 2.2.0](https://img.shields.io/badge/Version-2.2.0-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
 
 A Helm chart for Spark on Kubernetes operator.
 
@@ -78,8 +78,8 @@ See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall) for command docum
 | nameOverride | string | `""` | String to partially override release name. |
 | fullnameOverride | string | `""` | String to fully override release name. |
 | commonLabels | object | `{}` | Common labels to add to the resources. |
-| image.registry | string | `"docker.io"` | Image registry. |
-| image.repository | string | `"kubeflow/spark-operator"` | Image repository. |
+| image.registry | string | `"ghcr.io"` | Image registry. |
+| image.repository | string | `"kubeflow/spark-operator/controller"` | Image repository. |
 | image.tag | string | If not set, the chart appVersion will be used. | Image tag. |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy. |
 | image.pullSecrets | list | `[]` | Image pull secrets for private image registry. |
@@ -175,6 +175,10 @@ See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall) for command docum
 | prometheus.podMonitor.labels | object | `{}` | Pod monitor labels |
 | prometheus.podMonitor.jobLabel | string | `"spark-operator-podmonitor"` | The label to use to retrieve the job name from |
 | prometheus.podMonitor.podMetricsEndpoint | object | `{"interval":"5s","scheme":"http"}` | Prometheus metrics endpoint properties. `metrics.portName` will be used as a port |
+| certManager.enable | bool | `false` | Specifies whether to use [cert-manager](https://cert-manager.io) to generate certificate for webhook. `webhook.enable` must be set to `true` to enable cert-manager. |
+| certManager.issuerRef | object | A self-signed issuer will be created and used if not specified. | The reference to the issuer. |
+| certManager.duration | string | `2160h` (90 days) will be used if not specified. | The duration of the certificate validity (e.g. `2160h`). See [cert-manager.io/v1.Certificate](https://cert-manager.io/docs/reference/api-docs/#cert-manager.io/v1.Certificate). |
+| certManager.renewBefore | string | 1/3 of issued certificate’s lifetime. | The duration before the certificate expiration to renew the certificate (e.g. `720h`). See [cert-manager.io/v1.Certificate](https://cert-manager.io/docs/reference/api-docs/#cert-manager.io/v1.Certificate). |
 
 ## Maintainers
 

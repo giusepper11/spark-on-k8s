@@ -20,7 +20,7 @@ helm repo update
 
 ```sh
 # Download and extract Helm charts to source directory
-helm pull spark-operator/spark-operator --version 2.1.1 --untar --untardir ./src/helm-charts
+helm pull spark-operator/spark-operator --version 2.2.0 --untar --untardir ./src/helm-charts
 
 ```
 
