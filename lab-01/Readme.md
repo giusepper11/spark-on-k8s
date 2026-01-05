@@ -1,6 +1,6 @@
 # Environment Installation Guide
 
-This document provides instructions for setting up the lab environment used by SPOK (Smart Platform for Orchestrated Knowledge). The installation use Helm charts.
+This document provides instructions for setting up the lab environment used by SPOK (Spark on K8s). The installation use Helm charts.
 
 ## Installation with Helm Charts
 
